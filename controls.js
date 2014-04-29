@@ -1,4 +1,30 @@
+function Move(puji,direction)
+{
+    console.log("Move was called"+ puji + direction);
+    if(direction==0)
+        pujis[puji].velocity = new Vector(0, -1);
+    else if(direction==1)
+        pujis[puji].velocity = new Vector(1, 0);
+    else if(direction==2)
+        pujis[puji].velocity = new Vector(0, 1);
+    else if(direction==3)
+        pujis[puji].velocity = new Vector(-1, 0);
+}
 
+function Shoot(puji)
+{
+    console.log("Shoot was called" + puji);
+    pujis[puji].fire();
+}
+
+function Stop(puji, direction)
+{
+    console.log("Stop was called"+ puji + direction);
+    if(direction==0 || direction==2)
+        pujis[puji].velocity.y=0;
+    else if(direction==1 || direction==3)
+        pujis[puji].velocity.x=0;
+}
 
 document.body.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -15,7 +41,7 @@ document.body.onkeydown = function(e) {
         case 74: // left
             pujis[0].velocity = new Vector(-1, 0);
             break;
-        case 76: // down
+        case 76: // right
             pujis[0].velocity = new Vector(1, 0);
             break;
     //Player #4
@@ -67,7 +93,7 @@ document.body.onkeydown = function(e) {
             pujis[3].velocity = new Vector(1, 0);
             break;
         case 12:
-            
+
     }
 };
 

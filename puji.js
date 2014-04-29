@@ -147,7 +147,6 @@ function mainLoop() {
     tick(GAME_SPEED * dt / FPS);
 //    t = new Date() | 0;
     t= Date.now();
-    console.log(dt);
 }
 
 var wi = window.setInterval(mainLoop, FPS);
