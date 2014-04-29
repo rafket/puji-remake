@@ -6,8 +6,10 @@ var PLAYER_SIZE_W = PLAYER_W / W,
     MAX_PLAYERS = 4,
     PLAYER_N,
     PUJI_N = 32,
-    t = new Date() | 0,
-    t_begin = new Date() | 0,
+//    t = new Date() | 0,
+    t= Date.now();
+//    t_begin = new Date() | 0,
+    t_begin = Date.now();
     FIRE_DISTANCE = 0.06
     countDead=0;
 
@@ -140,9 +142,12 @@ function tick(dt) {
 
 
 function mainLoop() {
-    var dt = (new Date() | 0) - t;
+//    var dt = (new Date() | 0) - t;
+    var dt = Date.now()-t;
     tick(GAME_SPEED * dt / FPS);
-    t = new Date() | 0;
+//    t = new Date() | 0;
+    t= Date.now();
+    console.log(dt);
 }
 
 var wi = window.setInterval(mainLoop, FPS);
