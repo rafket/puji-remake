@@ -1,8 +1,8 @@
 window.addEventListener('load', function(e) {
-//    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         document.getElementById('Buttons').className = 'Visible';
         document.getElementById('scoreboard2').className = 'Visible';
-//}
+}
 document.getElementById('Player1Up').addEventListener('touchstart',function(e){Move(0,0);}, false);
 document.getElementById('Player1Up').addEventListener('touchend',function(e){Stop(0,0);}, false);
 document.getElementById('Player1Right').addEventListener('touchstart',function(e){Move(0,1);}, false);
