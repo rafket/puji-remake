@@ -17,6 +17,11 @@ function updateScores() {
         el = el.getElementsByClassName("score")[0];
         el.innerHTML = scores[i];
     }
+    for(var i = 0; i < PLAYER_N; ++i) {
+        var el = document.getElementById("UDplayer" + i);
+        el = el.getElementsByClassName("score")[0];
+        el.innerHTML = scores[i];
+    }
 }
 
 function popup() {
