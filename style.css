@@ -76,6 +76,20 @@ canvas {
     top: 50%;
 }
 
+#scoreboard2 {
+    color: white;
+    margin-top: -100px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 #scoreboard .columns {
     width: 100%;
 }
@@ -93,6 +107,26 @@ canvas {
 }
 
 #scoreboard .columns .column-5 > div {
+    width: 20%;
+}
+
+#scoreboard2 .columns {
+    width: 100%;
+}
+
+#scoreboard2 .columns .column-2 > div {
+    width: 50%;
+}
+
+#scoreboard2 .columns .column-3 > div {
+    width: 33.333333333%;
+}
+
+#scoreboard2 .columns .column-4 > div {
+    width: 25%;
+}
+
+#scoreboard2 .columns .column-5 > div {
     width: 20%;
 }
 
