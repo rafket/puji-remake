@@ -6,12 +6,11 @@ var PLAYER_SIZE_W = PLAYER_W / W,
     MAX_PLAYERS = 4,
     PLAYER_N,
     PUJI_N = 32,
-//    t = new Date() | 0,
-    t= Date.now();
-//    t_begin = new Date() | 0,
-    t_begin = Date.now();
-    FIRE_DISTANCE = 0.06
-    countDead=0;
+    t= Date.now(),
+    t_begin = Date.now(),
+    FIRE_DISTANCE = 0.06,
+    StartedSD = 0, // Whether sudden death has started or not
+    countDead = 0;
 
 var pujis = [];
 
@@ -20,6 +19,12 @@ var NextDeathTime=-1;
 function SuddenDeath()
 {
     var killme = 1;
+    if(!StartedSD)
+    {
+        StartedSD = 1;
+        document.getElementById('Sudden').className = 'Visible';
+    }
+
     if(NextDeathTime<t)
     {
         if(NextDeathTime!=-1)

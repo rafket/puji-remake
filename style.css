@@ -180,3 +180,12 @@ canvas {
     bottom: 0;
     left: 0;
 }
+
+#Sudden
+{
+    color: #FF0030;
+    position: fixed;
+    bottom: 0;
+    margin-left: 37%;
+    font-size: 3em;
+}
