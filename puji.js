@@ -124,7 +124,7 @@ function AIBots() {
             continue;
         }
         if(pujis[i].stopTime < t) {
-            pujis[i].stopTime = t + Math.random() * 4000;
+            pujis[i].stopTime = t + Math.random() * 3000 + 1000;
             pujis[i].velocity = new Vector(Math.round(1 - 2 * Math.random()), Math.round(1 - 2 * Math.random()));
             if(pujis[i].velocity.x * pujis[i].velocity.y != 0) { // disallow diagonal movements
                 pujis[i].velocity = new Vector(0, 0);
