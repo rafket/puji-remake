@@ -33,15 +33,27 @@ document.body.onkeydown = function(e) {
             pujis[0].fire();
             break;
         case 73: // up
+            if(pujis[0].isFiring) {
+                break;
+            }
             pujis[0].velocity = new Vector(0, -1);
             break;
         case 75: // down
+            if(pujis[0].isFiring) {
+                break;
+            }
             pujis[0].velocity = new Vector(0, 1);
             break;
         case 74: // left
+            if(pujis[0].isFiring) {
+                break;
+            }
             pujis[0].velocity = new Vector(-1, 0);
             break;
         case 76: // right
+            if(pujis[0].isFiring) {
+                break;
+            }
             pujis[0].velocity = new Vector(1, 0);
             break;
     //Player #4
@@ -49,15 +61,27 @@ document.body.onkeydown = function(e) {
             pujis[1].fire();
             break;
         case 104:
+            if(pujis[1].isFiring) {
+                break;
+            }
             pujis[1].velocity = new Vector(0, -1);
             break;
         case 101:
+            if(pujis[1].isFiring) {
+                break;
+            }
             pujis[1].velocity = new Vector(0, 1);
             break;
         case 100:
+            if(pujis[1].isFiring) {
+                break;
+            }
             pujis[1].velocity = new Vector(-1, 0);
             break;
         case 102:
+            if(pujis[1].isFiring) {
+                break;
+            }
             pujis[1].velocity = new Vector(1, 0);
             break;
     //Player #3
@@ -65,15 +89,27 @@ document.body.onkeydown = function(e) {
             pujis[2].fire();
             break;
         case 87:
+            if(pujis[2].isFiring) {
+                break;
+            }
             pujis[2].velocity = new Vector(0, -1);
             break;
         case 83:
+            if(pujis[2].isFiring) {
+                break;
+            }
             pujis[2].velocity = new Vector(0, 1);
             break;
         case 65:
+            if(pujis[2].isFiring) {
+                break;
+            }
             pujis[2].velocity = new Vector(-1, 0);
             break;
         case 68:
+            if(pujis[2].isFiring) {
+                break;
+            }
             pujis[2].velocity = new Vector(1, 0);
             break;
     //Player #4
@@ -81,19 +117,29 @@ document.body.onkeydown = function(e) {
             pujis[3].fire();
             break;
         case 38:
+            if(pujis[3].isFiring) {
+                break;
+            }
             pujis[3].velocity = new Vector(0, -1);
             break;
         case 40:
+            if(pujis[3].isFiring) {
+                break;
+            }
             pujis[3].velocity = new Vector(0, 1);
             break;
         case 37:
+            if(pujis[3].isFiring) {
+                break;
+            }
             pujis[3].velocity = new Vector(-1, 0);
             break;
         case 39:
+            if(pujis[3].isFiring) {
+                break;
+            }
             pujis[3].velocity = new Vector(1, 0);
             break;
-        case 12:
-
     }
 };
 

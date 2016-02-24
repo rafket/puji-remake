@@ -1,6 +1,6 @@
 var PLAYER_SIZE_W = PLAYER_W / W,
     PLAYER_SIZE_H = PLAYER_H / H,
-    PLAYER_SPEED = 0.003,
+    PLAYER_SPEED = 0.002,
     FPS = 20,
     GAME_SPEED = 1,
     MAX_PLAYERS = 4,
@@ -9,6 +9,8 @@ var PLAYER_SIZE_W = PLAYER_W / W,
     t= Date.now(),
     t_begin = Date.now(),
     FIRE_DISTANCE = 0.06,
+    FIRE_DURATION = 200,
+    DIE_DURATION = 300,
     StartedSD = 0, // Whether sudden death has started or not
     countDead = 0;
 
@@ -75,7 +77,7 @@ function startGame(players) {
                 false,
                 true,
                 i,
-                new Sprite('images/puji.png', new Vector(PLAYER_W, PLAYER_H))
+                new Sprite('images/pujis.png', new Vector(PLAYER_W, PLAYER_H))
             )
         );
     }
@@ -89,7 +91,7 @@ function startGame(players) {
                 false,
                 false,
                 -1,
-                new Sprite('images/puji.png', new Vector(PLAYER_W, PLAYER_H))
+                new Sprite('images/pujis.png', new Vector(PLAYER_W, PLAYER_H))
             )
         );
     }
