@@ -36,17 +36,17 @@ Player.prototype = {
             this.face.x = this.velocity.x;
             this.face.y = this.velocity.y;
         }
-        if(this.location.x < 0) {
-            this.location.x = 0;
+        if(this.location.x < PLAYER_SIZE_W) {
+            this.location.x = PLAYER_SIZE_W;
         }
-        if(this.location.x > 1 - PLAYER_SIZE_W) {
-            this.location.x = 1 - PLAYER_SIZE_W;
+        if(this.location.x > 1 - PLAYER_SIZE_W - PLAYER_SIZE_W) {
+            this.location.x = 1 - PLAYER_SIZE_W - PLAYER_SIZE_W;
         }
-        if(this.location.y < 0) {
-            this.location.y = 0;
+        if(this.location.y < PLAYER_SIZE_H) {
+            this.location.y = PLAYER_SIZE_H;
         }
-        if(this.location.y > 1 - PLAYER_SIZE_H) {
-            this.location.y = 1 - PLAYER_SIZE_H;
+        if(this.location.y > 1 - PLAYER_SIZE_H - PLAYER_SIZE_H) {
+            this.location.y = 1 - PLAYER_SIZE_H - PLAYER_SIZE_H;
         }
     },
     fire: function() {

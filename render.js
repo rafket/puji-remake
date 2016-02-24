@@ -1,13 +1,17 @@
 var PLAYER_W = 24, PLAYER_H = 24;
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var W = 640, H = 480 ;
+var W = 648, H = 480 ;
 var scores = [];
 var indices = []; //Puji indices such that every index corresponds to a puji (for sorting purposes)
+var background_seed = [];
 
-// var george = new Sprite( 'images/george_0.png', new Vector( 44, 44 ) );
-var background = new Image();
-background.src = 'images/puji_room.jpg';
+var decorations = new Image();
+decorations.src = 'images/room_decorations.png';
+var tiles = new Image();
+tiles.src = 'images/room_tiles.png';
+var moss = new Image();
+moss.src = 'images/room_moss.png';
 
 canvas.width = W;
 canvas.height = H;
@@ -115,14 +119,151 @@ function drawPujis() {
 
 }
 
+function drawBackground() {
+    if(background_seed.length==0) {
+        for(var i=1; i<W/PLAYER_W-1; ++i) {
+            background_seed[i]= new Array(H/PLAYER_H-1);
+            for(var j=1; j<H/PLAYER_H-1; ++j) {
+                background_seed[i][j]= Math.random();
+            }
+        }
+    }
+    //Draw tiles and moss
+
+    for(var i=1; i<W/PLAYER_W-1; ++i) {
+        for(var j=1; j<H/PLAYER_H-1; ++j) {
+            ctx.drawImage(tiles, PLAYER_W*(Math.round(background_seed[i][j]*5)%5), 0, PLAYER_W, PLAYER_H, i*PLAYER_W, j*PLAYER_H, PLAYER_W, PLAYER_H);
+            if(background_seed[i][j]*10<1) {
+                ctx.drawImage(moss, PLAYER_W*(Math.round(background_seed[i][j]*200)%5), 0, PLAYER_W, PLAYER_H, i*PLAYER_W, j*PLAYER_H, PLAYER_W, PLAYER_H);
+            }
+        }
+    }
+
+    //Draw walls
+    ctx.drawImage(decorations, 14*PLAYER_W, 0, PLAYER_W, PLAYER_H, 0, 0, PLAYER_W, PLAYER_H);
+    for(var i=1; i<W/PLAYER_W; ++i) {
+        ctx.drawImage(decorations, 18*PLAYER_W, 0, PLAYER_W, PLAYER_H, i*PLAYER_W, 0, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 19*PLAYER_W, 0, PLAYER_W, PLAYER_H, i*PLAYER_W, H-PLAYER_H, PLAYER_W, PLAYER_H);
+    }
+    ctx.drawImage(decorations, 15*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-PLAYER_W, 0, PLAYER_W, PLAYER_H);
+    for(var i=1; i<H/PLAYER_H; ++i) {
+        ctx.drawImage(decorations, 21*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-PLAYER_W, i*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 20*PLAYER_W, 0, PLAYER_W, PLAYER_H, 0, i*PLAYER_H, PLAYER_W, PLAYER_H);
+    }
+    ctx.drawImage(decorations, 16*PLAYER_W, 0, PLAYER_W, PLAYER_H, 0, H-PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 17*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-PLAYER_W, H-PLAYER_H, PLAYER_W, PLAYER_H);
+
+    //Draw decorations
+
+    ctx.drawImage(decorations, 1*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 2*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 3*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 4*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 1*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 7*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 7*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, 4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 1*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 6*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 6*PLAYER_W, 0, PLAYER_W, PLAYER_H, 4*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 12*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 9*PLAYER_W, 0, PLAYER_W, PLAYER_H, 7*PLAYER_W, 6*PLAYER_H, PLAYER_W, PLAYER_H);
+
+
+    ctx.drawImage(decorations, 1*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 2*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 3*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 4*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 2*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 8*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 8*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, 4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 2*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 6*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 6*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-5*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 11*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 10*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-8*PLAYER_W, 6*PLAYER_H, PLAYER_W, PLAYER_H);
+
+
+    ctx.drawImage(decorations, 1*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 2*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 3*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 4*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 3*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 5*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 5*PLAYER_W, 0, PLAYER_W, PLAYER_H, 4*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 3*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 7*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 7*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, H-5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 10*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 11*PLAYER_W, 0, PLAYER_W, PLAYER_H, 7*PLAYER_W, H-7*PLAYER_H, PLAYER_W, PLAYER_H);
+
+
+    ctx.drawImage(decorations, 1*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 2*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 3*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 4*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 4*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 8*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 8*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, H-5*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 4*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 5*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 5*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-5*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+    ctx.drawImage(decorations, 9*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+
+    ctx.drawImage(decorations, 12*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-8*PLAYER_W, H-7*PLAYER_H, PLAYER_W, PLAYER_H);
+
+
+    for(var i=6*PLAYER_W; i<W-6*PLAYER_W; i+=PLAYER_W) {
+        ctx.drawImage(decorations, 5*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, H-3*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, H-4*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, H-5*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, H-6*PLAYER_H, PLAYER_W, PLAYER_H);
+
+        ctx.drawImage(decorations, 6*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, 2*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, 3*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, 4*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, 5*PLAYER_H, PLAYER_W, PLAYER_H);
+    }
+
+    for(var i=6*PLAYER_H; i<H-6*PLAYER_H; i+=PLAYER_H) {
+        ctx.drawImage(decorations, 7*PLAYER_W, 0, PLAYER_W, PLAYER_H, 2*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, 3*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, 4*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, 5*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, 6*PLAYER_W, i, PLAYER_W, PLAYER_H);
+
+        ctx.drawImage(decorations, 8*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-3*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-4*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-5*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-6*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 13*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-7*PLAYER_W, i, PLAYER_W, PLAYER_H);
+    }
+
+    for(var i=8*PLAYER_W; i<W-8*PLAYER_W; i+=PLAYER_W) {
+        ctx.drawImage(decorations, 5*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, 6*PLAYER_H, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 6*PLAYER_W, 0, PLAYER_W, PLAYER_H, i, H-7*PLAYER_H, PLAYER_W, PLAYER_H);
+    }
+
+    for(var i=7*PLAYER_H; i<H-7*PLAYER_H; i+=PLAYER_H) {
+        ctx.drawImage(decorations, 8*PLAYER_W, 0, PLAYER_W, PLAYER_H, 7*PLAYER_W, i, PLAYER_W, PLAYER_H);
+        ctx.drawImage(decorations, 7*PLAYER_W, 0, PLAYER_W, PLAYER_H, W-8*PLAYER_W, i, PLAYER_W, PLAYER_H);
+    }
+}
+
 function clearCanvas() {
     ctx.fillStyle = 'white';
     ctx.clearRect(-PLAYER_W / 2, -PLAYER_H / 2, W + PLAYER_W / 2, H + PLAYER_H / 2);
-//    ctx.drawImage(background, -PLAYER_W / 2, -PLAYER_H / 2);
 }
 
 function render() {
     clearCanvas();
+    drawBackground();
     drawPujis();
 }
 
