@@ -1,5 +1,5 @@
 window.addEventListener('load', function(e) {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Jolla/i.test(navigator.userAgent) ) {
         document.getElementById('Buttons').className = 'Visible';
         document.getElementById('scoreboard2').className = 'Visible';
 }

@@ -1,7 +1,7 @@
 var PLAYER_SIZE_W = PLAYER_W / W,
     PLAYER_SIZE_H = PLAYER_H / H,
     PLAYER_SPEED = 0.002,
-    FPS = 20,
+    FPS = 30,
     GAME_SPEED = 1,
     MAX_PLAYERS = 4,
     PLAYER_N,
@@ -151,9 +151,11 @@ function tick(dt) {
 function mainLoop() {
 //    var dt = (new Date() | 0) - t;
     var dt = Date.now()-t;
+    if(dt*FPS>=1000) {
     tick(GAME_SPEED * dt / FPS);
 //    t = new Date() | 0;
     t= Date.now();
+    }
 }
 
 var wi = window.setInterval(mainLoop, FPS);
