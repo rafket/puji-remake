@@ -13,7 +13,8 @@ var GAME_SPEED = 3,
     DIE_DURATION = 300,
     StartedSD = 0, // Whether sudden death has started or not
     SUDDEN_DEATH_TIME = 60000,
-    countDead = 0;
+    countDead = 0,
+    onTouch = 0;
 
 var pujis = [];
 
@@ -136,11 +137,19 @@ function start(players) {
     showElement(player1);
     showElement(player2);
     showElement(player3);
+    if(onTouch) {
+        showElement(UDplayer0);
+        showElement(UDplayer1);
+        showElement(UDplayer2);
+        showElement(UDplayer3);
+    }
     if(players==2) {
         hideElement(player2);
+        hideElement(UDplayer2);
     }
     if(players<=3) {
         hideElement(player3);
+        hideElement(UDplayer3);
     }
 }
 

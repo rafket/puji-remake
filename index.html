@@ -12,12 +12,12 @@
             <canvas id="canvas"></canvas>
             <div id="popup">
                 <h1>Game ended!</h1>
-                <h2 onclick="removePopup(); restart()">Play again!</h2>
-                <h2 onclick="removePopup(); showElement(menu)">Back to menu</h2>
+                <button class="button" onclick="removePopup(); restart()">Play again!</button>
+                <button class="button" onclick="removePopup(); showElement(menu)">Menu</button>
             </div>
             <div id="menu">
                 <div id="main">
-                    <h1>Main Menu</h1>
+                    <img src="images/puji_logo.png"></img>
                     <ul>
                         <li><button class="button" onclick="hideElement(menu); start(2)">2 Players</button></li>
                         <li><button class="button" onclick="hideElement(menu); start(3)">3 Players</button></li>

@@ -21,7 +21,8 @@ body {
 h1 {
     text-align: center;
     color: white;
-    padding: 10px;
+    display: inline-block;
+    padding-bottom: 1em;
 }
 
 #wrapper {
@@ -45,38 +46,21 @@ canvas {
 }
 
 #popup {
-    -webkit-animation: flash .5s infinite;
-    -o-animation: flash .5s infinite;
-    -moz-animation: flash .5s infinite;
-    animation: flash .5s infinite;
-    background-color: #000025;
-    border: 1px dashed #AAA;
-    -webkit-border-radius: 5px;
-    -o-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 1px 1px 5px 2px black;
-    -o-box-shadow: 1px 1px 5px 2px black;
-    -moz-box-shadow: 1px 1px 5px 2px black;
-    box-shadow: 1px 1px 5px 2px black;
     color: white;
     display: inline-block;
     left: 50%;
-    margin-left: -150px;
+    width: 200px;
+    margin-left: -100px;
     opacity: 0;
-    padding: .5em 0;
+    padding: .5em .5em;
     position: absolute;
     text-align: center;
-    top: -40%;
-    -webkit-transition: opacity .5s;
-    -o-transition: opacity .5s;
-    -moz-transition: opacity .5s;
-    transition: opacity .5s;
-    width: 300px;
+    top: 0;
+    background-color: rgba(40, 39, 34, 0.5);
 }
 
 #popup.show {
-    opacity: .95;
+    opacity: 1;
     top: 40%;
 }
 
@@ -204,46 +188,26 @@ canvas {
 }
 
 #menu {
-    -webkit-animation: flash .5s infinite;
-    -o-animation: flash .5s infinite;
-    -moz-animation: flash .5s infinite;
-    animation: flash .5s infinite;
-    background-color: #000025;
-    border: 1px dashed #AAA;
-    -webkit-border-radius: 5px;
-    -o-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-shadow: 1px 1px 5px 2px black;
-    -o-box-shadow: 1px 1px 5px 2px black;
-    -moz-box-shadow: 1px 1px 5px 2px black;
-    box-shadow: 1px 1px 5px 2px black;
-    color: white;
-    display: inline-block;
-    padding: .5em 0;
     position: absolute;
     text-align: center;
-    -webkit-transition: opacity .5s;
-    -o-transition: opacity .5s;
-    -moz-transition: opacity .5s;
-    transition: opacity .5s;
     width: 300px;
-    height: 60%;
+    min-height: 70%;
     width: 40%;
     overflow: auto;
     margin: auto;
     position: absolute;
-    top: 0; left:0; bottom: 0; right: 0;
+    display: block;
+    top: 10%; left:0; bottom: auto; right: 0;
+    background-color: rgba(40, 39, 34, 0.5);
 }
 
 .button {
     display: block;
-    width: 150px;
-    margin: 0 auto;
-    height: 30px;
+    margin: auto;
+    height: 50px;
+    width: 114px;
     line-height: 30px;
     color: white;
     font-weight: bold;
-    background: none;
-    font-size: 1.5em;
+    background: url('images/text_holder.png');
 }
