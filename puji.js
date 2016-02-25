@@ -150,10 +150,8 @@ function tick(dt) {
 
 function mainLoop() {
     requestAnimationFrame(mainLoop);
-    //    var dt = (new Date() | 0) - t;
-    var dt = Date.now()-t;
-    tick(GAME_SPEED * dt / FPS);
-    //    t = new Date() | 0;
+    var dt = (Date.now()-t);
+    tick(GAME_SPEED * 16 / FPS);
     t= Date.now();
 }
 
