@@ -8,27 +8,47 @@
     </head>
 
     <body>
-        <canvas id="canvas"></canvas>
-        <div id="popup">
-            <h1>Game ended!</h1>
+        <div id="wrapper">
+            <canvas id="canvas"></canvas>
+            <div id="popup">
+                <h1>Game ended!</h1>
+                <h2 onclick="removePopup(); restart()">Play again!</h2>
+                <h2 onclick="removePopup(); showElement(menu)">Back to menu</h2>
+            </div>
+            <div id="menu">
+                <div id="main">
+                    <h1>Main Menu</h1>
+                    <ul>
+                        <li><button class="button" onclick="hideElement(menu); start(2)">2 Players</button></li>
+                        <li><button class="button" onclick="hideElement(menu); start(3)">3 Players</button></li>
+                        <li><button class="button" onclick="hideElement(menu); start(4)">4 Players</button></li>
+                    </ul>
+                </div>
+                <div id="settings">
+                    <h1>Settings</h1>
+                    <ul>
+                        <li><button class="button" onclick="hideElement(settings); showElement(main)">Back</button></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div id="scoreboard">
             <div class="columns column-6">
                 <div id="player0">
-                    <span class="username">geonm</span>:
-                    <span class="score">10</span>
+                    <span class="username">Player 1</span>:
+                    <span class="score">0</span>
                 </div>
                 <div id="player1">
-                    <span class="username">rafael859</span>:
-                    <span class="score">8</span>
+                    <span class="username">Player 2</span>:
+                    <span class="score">0</span>
                 </div>
                 <div id="player2">
-                    <span class="username">kipoujr</span>:
-                    <span class="score">4</span>
+                    <span class="username">Player 3</span>:
+                    <span class="score">0</span>
                 </div>
                 <div id="player3">
-                    <span class="username">skydraios</span>:
-                    <span class="score">INF</span>
+                    <span class="username">Player 4</span>:
+                    <span class="score">0</span>
                 </div>
             </div>
         </div>
@@ -36,56 +56,56 @@
         <div id="scoreboard2" class="InVisible">
             <div class="columns column-6">
                 <div id="UDplayer0">
-                    <span class="username">geonm</span>:
-                    <span class="score">10</span>
+                    <span class="username">Player 1</span>:
+                    <span class="score">0</span>
                 </div>
                 <div id="UDplayer1">
-                    <span class="username">rafael859</span>:
-                    <span class="score">8</span>
+                    <span class="username">Player 2</span>:
+                    <span class="score">0</span>
                 </div>
                 <div id="UDplayer2">
-                    <span class="username">kipoujr</span>:
-                    <span class="score">4</span>
+                    <span class="username">Player 3</span>:
+                    <span class="score">0</span>
                 </div>
                 <div id="UDplayer3">
-                    <span class="username">skydraios</span>:
-                    <span class="score">INF</span>
+                    <span class="username">Player 4</span>:
+                    <span class="score">0</span>
                 </div>
             </div>
         </div>
 
         <div id="Buttons" class="InVisible">
-        <div id="Buttons1">
-		<div id="Player1Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player1Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player1Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player1Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player1Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
-        </div>
+            <div id="Buttons1">
+                <div id="Player1Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player1Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player1Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player1Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player1Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
+            </div>
 
-        <div id="Buttons2">
-		<div id="Player2Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player2Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player2Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player2Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player2Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
-        </div>
+            <div id="Buttons2">
+                <div id="Player2Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player2Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player2Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player2Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player2Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
+            </div>
 
-        <div id="Buttons3">
-		<div id="Player3Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player3Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player3Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player3Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player3Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
-        </div>
+            <div id="Buttons3">
+                <div id="Player3Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player3Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player3Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player3Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player3Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
+            </div>
 
-        <div id="Buttons4">
-		<div id="Player4Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player4Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player4Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player4Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
-		<div id="Player4Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
-        </div>
+            <div id="Buttons4">
+                <div id="Player4Left" style="background: url(./images/left.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player4Right" style="background: url(./images/right.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player4Shoot" style="background: url(./images/shoot.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player4Up" style="background: url(./images/up.png); display: inline-block; height: 64px; width: 64px;"></div>
+                <div id="Player4Down" style="background: url(./images/down.png); display: inline-block; height: 64px; width: 64px;"></div>
+            </div>
         </div>
 
         <div id="Sudden" class="InVisible">Sudden Death!</div>

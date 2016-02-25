@@ -1,5 +1,4 @@
 @import "animations.css";
-
 * {
     border: 0;
     margin: 0;
@@ -17,6 +16,22 @@
 
 body {
     background-color: #282722;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+#wrapper {
+    left: 50%;
+    margin-left: -320px;
+    margin-top: -240px;
+    position: absolute;
+    top: 50%;
+    width: 640px;
+    height: 480px;
 }
 
 canvas {
@@ -186,4 +201,49 @@ canvas {
     bottom: 0;
     margin-left: 37%;
     font-size: 3em;
+}
+
+#menu {
+    -webkit-animation: flash .5s infinite;
+    -o-animation: flash .5s infinite;
+    -moz-animation: flash .5s infinite;
+    animation: flash .5s infinite;
+    background-color: #000025;
+    border: 1px dashed #AAA;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 5px 2px black;
+    -o-box-shadow: 1px 1px 5px 2px black;
+    -moz-box-shadow: 1px 1px 5px 2px black;
+    box-shadow: 1px 1px 5px 2px black;
+    color: white;
+    display: inline-block;
+    padding: .5em 0;
+    position: absolute;
+    text-align: center;
+    -webkit-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    transition: opacity .5s;
+    width: 300px;
+    height: 60%;
+    width: 40%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left:0; bottom: 0; right: 0;
+}
+
+.button {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    background: none;
+    font-size: 1.5em;
 }

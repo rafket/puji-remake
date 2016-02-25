@@ -4,7 +4,7 @@ var GAME_SPEED = 3,
     PLAYER_SPEED = 0.0045/GAME_SPEED,
     FPS = 60,
     MAX_PLAYERS = 4,
-    PLAYER_N,
+    PLAYER_N = 4,
     PUJI_N = 32,
     t= Date.now(),
     t_begin = Date.now(),
@@ -12,11 +12,22 @@ var GAME_SPEED = 3,
     FIRE_DURATION = 200,
     DIE_DURATION = 300,
     StartedSD = 0, // Whether sudden death has started or not
+    SUDDEN_DEATH_TIME = 60000,
     countDead = 0;
 
 var pujis = [];
 
 var NextDeathTime=-1;
+
+function showElement(element) {
+    element.style.display = '';
+}
+
+function hideElement(element) {
+    element.style.display = 'none';
+}
+
+hideElement(settings);
 
 function SuddenDeath()
 {
@@ -42,13 +53,14 @@ function SuddenDeath()
 
 function CheckForSuddenDeath()
 {
-    if(t>t_begin+60000)
+    if(t>t_begin+SUDDEN_DEATH_TIME)
         SuddenDeath();
 }
 
 function startGame(players) {
     PLAYER_N = players;
     PUJI_N += MAX_PLAYERS - PLAYER_N;
+    pujis = [];
     for(var i = 0; i < MAX_PLAYERS - PLAYER_N; ++i) { // create dead and invisible players to fill pujis array
         var position = new Vector(0, 0),
             face = new Vector(0, 0);
@@ -65,7 +77,9 @@ function startGame(players) {
         );
     }
     for(var i = MAX_PLAYERS - PLAYER_N; i < MAX_PLAYERS; ++i) {
-        scores.push(0);
+        if(scores.length<=i-MAX_PLAYERS+PLAYER_N) {
+            scores.push(0);
+        }
         updateScores();
         var position = new Vector(Math.random(), Math.random()),
             face = new Vector(0, 0); // TODO: randomize face
@@ -76,7 +90,7 @@ function startGame(players) {
                 face,
                 false,
                 true,
-                i,
+                i-MAX_PLAYERS+PLAYER_N,
                 new Sprite('images/pujis.png', new Vector(PLAYER_W, PLAYER_H))
             )
         );
@@ -103,11 +117,32 @@ function addPoint(i) {
 }
 
 function restart() {
+    indices = [];
+    t_begin = Date.now();
+    StartedSD = 0;
     newGame();
     startGame(PLAYER_N);
 }
 
-startGame(4);
+function start(players) {
+    scores = [];
+    indices = [];
+    t_begin = Date.now();
+    StartedSD = 0;
+    PLAYER_N = players;
+    newGame();
+    startGame(PLAYER_N);
+    showElement(player0);
+    showElement(player1);
+    showElement(player2);
+    showElement(player3);
+    if(players==2) {
+        hideElement(player2);
+    }
+    if(players<=3) {
+        hideElement(player3);
+    }
+}
 
 function integratePujis(dt) {
     countDead = 0;
@@ -149,11 +184,11 @@ function tick(dt) {
 
 
 function mainLoop() {
-    requestAnimationFrame(mainLoop);
+    wi = requestAnimationFrame(mainLoop);
     var dt = (Date.now()-t);
     tick(GAME_SPEED * 16 / FPS);
     t= Date.now();
 }
 
 //var wi = window.setInterval(mainLoop, FPS);
-var wi = window.requestAnimationFrame(mainLoop);
+//var wi = window.requestAnimationFrame(mainLoop);

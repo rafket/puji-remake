@@ -43,13 +43,13 @@ function removePopup() {
 
 function newGame() {
     removePopup();
-    wi = window.setInterval(mainLoop, FPS);
+    wi = window.requestAnimationFrame(mainLoop);
 }
 
 function endGame() {
     updateScores();
     popup();
-    clearInterval(wi);
+    window.cancelAnimationFrame(wi);
 }
 
 function compPujis(a, b) {
