@@ -1,8 +1,8 @@
-var PLAYER_SIZE_W = PLAYER_W / W,
+var GAME_SPEED = 3,
+    PLAYER_SIZE_W = PLAYER_W / W,
     PLAYER_SIZE_H = PLAYER_H / H,
-    PLAYER_SPEED = 0.002,
-    FPS = 30,
-    GAME_SPEED = 1,
+    PLAYER_SPEED = 0.0045/GAME_SPEED,
+    FPS = 60,
     MAX_PLAYERS = 4,
     PLAYER_N,
     PUJI_N = 32,
@@ -149,13 +149,13 @@ function tick(dt) {
 
 
 function mainLoop() {
-//    var dt = (new Date() | 0) - t;
+    requestAnimationFrame(mainLoop);
+    //    var dt = (new Date() | 0) - t;
     var dt = Date.now()-t;
-    if(dt*FPS>=1000) {
     tick(GAME_SPEED * dt / FPS);
-//    t = new Date() | 0;
+    //    t = new Date() | 0;
     t= Date.now();
-    }
 }
 
-var wi = window.setInterval(mainLoop, FPS);
+//var wi = window.setInterval(mainLoop, FPS);
+var wi = window.requestAnimationFrame(mainLoop);

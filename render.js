@@ -5,7 +5,7 @@ var W = 648, H = 480 ;
 var scores = [];
 var indices = []; //Puji indices such that every index corresponds to a puji (for sorting purposes)
 var background_seed = [];
-var prevt = 0;
+var prevstamp = 0;
 var frames=0;
 
 var decorations = new Image();
@@ -100,7 +100,7 @@ function drawPujis() {
         }
         if(pujis[i].velocity.x!=0 || pujis[i].velocity.y!=0 || pujis[i].isDead || pujis[i].isFiring || pujis[i].isDying) {
             if(spritepos.x==0 || spritepos.x==5 || spritepos.x==20) {
-                spritepos.x+=Math.round(t * PLAYER_SPEED * GAME_SPEED * 4)%3;
+                spritepos.x+=Math.round(t * PLAYER_SPEED * 4)%3;
             }
             else if(spritepos.x==10) {
                 spritepos.x+=Math.floor(Math.min(3.9 * (t-pujis[i].fireTime) / FIRE_DURATION, 3.9))%4;
@@ -109,7 +109,7 @@ function drawPujis() {
                 spritepos.x+=Math.floor(Math.min(2.9 * (t-pujis[i].dyingTime) / DIE_DURATION, 2.9))%3;
             }
             else {
-                spritepos.x+=Math.round(t * PLAYER_SPEED * GAME_SPEED * 4)%2;
+                spritepos.x+=Math.round(t * PLAYER_SPEED * 4)%2;
             }
         }
         pujis[i].sprite.draw(
@@ -261,15 +261,16 @@ function drawBackground() {
 function clearCanvas() {
     ctx.fillStyle = 'white';
     ctx.clearRect(-PLAYER_W / 2, -PLAYER_H / 2, W + PLAYER_W / 2, H + PLAYER_H / 2);
-    if(t-prevt>1000){
-        console.log(frames);
-        prevt=t;
-        frames=0;
-    }
-    ++frames;
 }
 
 function render() {
+    ++frames;
+    if(Date.now()-prevstamp>=1000){
+        console.log(frames);
+        console.log(Date.now());
+        prevstamp=Date.now();
+        frames=0;
+    }
     clearCanvas();
     drawBackground();
     drawPujis();
