@@ -149,34 +149,32 @@ canvas {
     visibility:visible;
 }
 
+.Pad {
+    height: 144px;
+    width: 144px;
+    position: fixed;
+}
+
 #Buttons1
 {
-    background-color: #000025;
-    position: fixed;
     top: 0;
     left: 0;
 }
 
 #Buttons2
 {
-    background-color: #000025;
-    position: fixed;
     top: 0;
     right: 0;
 }
 
 #Buttons3
 {
-    background-color: #000025;
-    position: fixed;
     bottom: 0;
     right: 0;
 }
 
 #Buttons4
 {
-    background-color: #000025;
-    position: fixed;
     bottom: 0;
     left: 0;
 }
@@ -221,4 +219,52 @@ canvas {
     color: white;
     font-weight: bold;
     background: url('images/text_holder.png');
+}
+
+.PButton {
+    display: block;
+    height: 48px;
+    width: 48px;
+    background-color: rgba(40, 39, 34, 0.5);
+    outline: #00ff00 dashed 1px;
+}
+
+.Up {
+    position: absolute;
+    top: 0;
+    left: 48px;
+    right: 48px;
+}
+
+.Down {
+    position: absolute;
+    bottom: 0px;
+    top: 96px;
+    left: 48px;
+    right: 48px;
+}
+
+.Left {
+    position: absolute;
+    top: 48px;
+    bottom: 48px;
+    left: 0;
+    right: 96px;
+}
+
+
+.Right {
+    position: absolute;
+    top: 48px;
+    bottom: 48px;
+    left: 96px;
+    right: 0;
+}
+
+.Shoot {
+    position: absolute;
+    top: 48px;
+    left: 48px;
+    right: 48px;
+    bottom: 48px;
 }
