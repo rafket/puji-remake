@@ -30,38 +30,72 @@ h1 {
     padding-bottom: 1em;
 }
 
-#wrapper {
-    left: 50%;
-    margin-left: -320px;
-    margin-top: -240px;
-    position: absolute;
-    top: 50%;
-    width: 640px;
-    height: 480px;
+@media (min-height: 480px) {
+    #wrapper {
+        left: 50%;
+        margin-left: -320px;
+        margin-top: -240px;
+        position: absolute;
+        top: 50%;
+        width: 640px;
+        height: 480px;
+    }
+
+    canvas {
+        left: 50%;
+        margin-left: -320px;
+        margin-top: -240px;
+        position: absolute;
+        top: 50%;
+        width: 640px;
+        height: 480px;
+    }
+
+    #popup {
+        color: white;
+        display: inline-block;
+        left: 50%;
+        width: 200px;
+        margin-left: -100px;
+        opacity: 0;
+        padding: .5em .5em;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        background-color: rgba(40, 39, 34, 0.5);
+    }
 }
 
-canvas {
-    left: 50%;
-    margin-left: -320px;
-    margin-top: -240px;
-    position: absolute;
-    top: 50%;
-    width: 640px;
-    height: 480px;
-}
+@media (max-height: 480px) {
+    #wrapper {
+        left: 50%;
+        margin-left: -240px;
+        position: absolute;
+        width: 480px;
+        height: 360px;
+    }
 
-#popup {
-    color: white;
-    display: inline-block;
-    left: 50%;
-    width: 200px;
-    margin-left: -100px;
-    opacity: 0;
-    padding: .5em .5em;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    background-color: rgba(40, 39, 34, 0.5);
+    canvas {
+        left: 50%;
+        margin-left: -240px;
+        position: absolute;
+        width: 480px;
+        height: 360px;
+    }
+
+    #popup {
+        color: white;
+        display: inline-block;
+        left: 50%;
+        width: 150px;
+        margin-left: -75px;
+        opacity: 0;
+        padding: .375em .375em;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        background-color: rgba(40, 39, 34, 0.5);
+    }
 }
 
 #popup.show {
