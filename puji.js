@@ -175,10 +175,22 @@ function AIBots() {
             continue;
         }
         if(pujis[i].stopTime < t) {
-            pujis[i].stopTime = t + Math.random() * 3000 + 1000;
-            pujis[i].velocity = new Vector(Math.round(1 - 2 * Math.random()), Math.round(1 - 2 * Math.random()));
-            if(pujis[i].velocity.x * pujis[i].velocity.y != 0) { // disallow diagonal movements
-                pujis[i].velocity = new Vector(0, 0);
+            pujis[i].following = -1;
+            if(Math.random()*10<1) { // Decide if this puji will follow another puji
+                if(Math.random()*5<1) { // Decide if it is going to be a player controlled puji
+                    pujis[i].following = MAX_PLAYERS - (Math.round(Math.random()*(PLAYER_N-1))+1);
+                }
+                else {
+                    pujis[i].following = MAX_PLAYERS + (Math.round(Math.random()*(PUJI_N-MAX_PLAYERS-1)));
+                }
+                pujis[i].stopTime = t + Math.random() * 6000 + 2000; // Follow for a longer period of time
+            }
+            else {
+                pujis[i].stopTime = t + Math.random() * 3000 + 1000;
+                pujis[i].velocity = new Vector(Math.round(1 - 2 * Math.random()), Math.round(1 - 2 * Math.random()));
+                if(pujis[i].velocity.x * pujis[i].velocity.y != 0) { // disallow diagonal movements
+                    pujis[i].velocity = new Vector(0, 0);
+                }
             }
         }
     }

@@ -270,8 +270,6 @@ function render() {
     }
     if(Date.now()-prevstamp>=1000){
         FPS=Math.round((FPS+frames)/2);
-        console.log(frames);
-        console.log(Date.now());
         prevstamp=Date.now();
         frames=0;
     }

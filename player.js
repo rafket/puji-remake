@@ -13,6 +13,7 @@ function Player(location, velocity, face, isDead, isPlayer, playerIndex, sprite)
     this.fireTime = -1;
     this.isDying = 0;
     this.dyingTime = -1;
+    this.following = -1;
 }
 
 Player.prototype = {
@@ -23,6 +24,10 @@ Player.prototype = {
             this.dyingTime = -1;
         }
         if(this.isDead) return;
+        if(this.following >= 0) {
+            this.velocity.x = pujis[this.following].velocity.x;
+            this.velocity.y = pujis[this.following].velocity.y;
+        }
         this.location.x += this.velocity.x * PLAYER_SPEED * dt;
         this.location.y += this.velocity.y * PLAYER_SPEED * dt;
         if(this.fireTime+FIRE_DURATION < t && this.isFiring) {
