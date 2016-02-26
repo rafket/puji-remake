@@ -28,6 +28,9 @@ function Stop(puji, direction)
 
 document.body.onkeydown = function(e) {
     switch (e.keyCode) {
+        case 27:
+            endGame();
+            break;
     //Player #1
         case 79: // fire
             pujis[0].fire();
