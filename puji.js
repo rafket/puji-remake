@@ -64,7 +64,7 @@ function startGame(players) {
     pujis = [];
     for(var i = 0; i < MAX_PLAYERS - PLAYER_N; ++i) { // create dead and invisible players to fill pujis array
         var position = new Vector(0, 0),
-            face = new Vector(0, 0);
+            face = new Vector(Math.round(Math.random()*3)-2, Math.round(Math.random()*3)-2);
         pujis.push(
             new Player(
                 position,
@@ -83,7 +83,7 @@ function startGame(players) {
         }
         updateScores();
         var position = new Vector(Math.random(), Math.random()),
-            face = new Vector(0, 0); // TODO: randomize face
+            face = new Vector(Math.round(Math.random()*3)-2, Math.round(Math.random()*3)-2);
         pujis.push(
             new Player(
                 position,
