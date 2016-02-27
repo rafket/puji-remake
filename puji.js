@@ -121,6 +121,7 @@ function restart() {
     indices = [];
     t_begin = Date.now();
     StartedSD = 0;
+    document.getElementById('Sudden').className = 'InVisible';
     newGame();
     startGame(PLAYER_N);
 }
@@ -130,6 +131,7 @@ function start(players) {
     indices = [];
     t_begin = Date.now();
     StartedSD = 0;
+    document.getElementById('Sudden').className = 'InVisible';
     PLAYER_N = players;
     newGame();
     startGame(PLAYER_N);
