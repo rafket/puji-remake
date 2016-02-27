@@ -30,6 +30,70 @@ h1 {
     padding-bottom: 1em;
 }
 
+@media (max-height: 360px) {
+    #wrapper {
+        left: 50%;
+        margin-left: -180px;
+        position: absolute;
+        width: 360px;
+        height: 270px;
+    }
+
+    canvas {
+        left: 50%;
+        margin-left: -180px;
+        position: absolute;
+        width: 360px;
+        height: 270px;
+    }
+
+    #popup {
+        color: white;
+        display: inline-block;
+        left: 50%;
+        width: 112.5px;
+        margin-left: -56.25px;
+        opacity: 0;
+        padding: .28125em .28125em;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        background-color: rgba(40, 39, 34, 0.5);
+    }
+}
+
+@media (min-height: 360px) {
+    #wrapper {
+        left: 50%;
+        margin-left: -240px;
+        position: absolute;
+        width: 480px;
+        height: 360px;
+    }
+
+    canvas {
+        left: 50%;
+        margin-left: -240px;
+        position: absolute;
+        width: 480px;
+        height: 360px;
+    }
+
+    #popup {
+        color: white;
+        display: inline-block;
+        left: 50%;
+        width: 150px;
+        margin-left: -75px;
+        opacity: 0;
+        padding: .375em .375em;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        background-color: rgba(40, 39, 34, 0.5);
+    }
+}
+
 @media (min-height: 480px) {
     #wrapper {
         left: 50%;
@@ -59,38 +123,6 @@ h1 {
         margin-left: -100px;
         opacity: 0;
         padding: .5em .5em;
-        position: absolute;
-        text-align: center;
-        top: 0;
-        background-color: rgba(40, 39, 34, 0.5);
-    }
-}
-
-@media (max-height: 480px) {
-    #wrapper {
-        left: 50%;
-        margin-left: -240px;
-        position: absolute;
-        width: 480px;
-        height: 360px;
-    }
-
-    canvas {
-        left: 50%;
-        margin-left: -240px;
-        position: absolute;
-        width: 480px;
-        height: 360px;
-    }
-
-    #popup {
-        color: white;
-        display: inline-block;
-        left: 50%;
-        width: 150px;
-        margin-left: -75px;
-        opacity: 0;
-        padding: .375em .375em;
         position: absolute;
         text-align: center;
         top: 0;
