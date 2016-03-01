@@ -2,6 +2,10 @@ window.addEventListener('load', function(e) {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Jolla/i.test(navigator.userAgent) ) {
         document.getElementById('Buttons').className = 'Visible';
         document.getElementById('scoreboard2').className = 'Visible';
+        hideElement(Buttons1);
+        hideElement(Buttons2);
+        hideElement(Buttons3);
+        hideElement(Buttons4);
         onTouch=true;
     }
     document.getElementById('Player1Up').addEventListener('touchstart',function(e){Move(0,0);}, false);

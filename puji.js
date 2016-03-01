@@ -144,14 +144,20 @@ function start(players) {
         showElement(UDplayer1);
         showElement(UDplayer2);
         showElement(UDplayer3);
+        showElement(Buttons1);
+        showElement(Buttons2);
+        showElement(Buttons3);
+        showElement(Buttons4);
     }
     if(players==2) {
         hideElement(player2);
         hideElement(UDplayer2);
+        hideElement(Buttons2);
     }
     if(players<=3) {
         hideElement(player3);
         hideElement(UDplayer3);
+        hideElement(Buttons1);
     }
 }
 
